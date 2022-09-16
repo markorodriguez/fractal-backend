@@ -23,11 +23,12 @@ public class OrderController {
     @Autowired
     private OrderDAO orderDAO;
 
+    /* Function to get Items from an order */
     @GetMapping(path = "/{id}")
     public List<SpecificOrder> findOrderDetails(@PathVariable Integer id){
         return orderDAO.findOrderDetails(id);
     }
-    
+
     @GetMapping(path = "/find-one/{id}")
     public SpecificOrder findOneOrderDetails(@PathVariable Integer id){
         return orderDAO.findOneOrderDetail(id);
@@ -36,6 +37,8 @@ public class OrderController {
     @PostMapping(path = "/update")
     public void updateOrderDetails(@RequestBody SpecificOrder specificOrder){
         orderDAO.updateOrderDetail(specificOrder);
+
+        /* Update total for the order after a change with the related subtotals */
         orderDAO.updateTotal(specificOrder.getOrder().getId());
     }
 
@@ -43,6 +46,8 @@ public class OrderController {
     public void deleteOrderDetails(@PathVariable Integer id){
         SpecificOrder foundOrder = orderDAO.findOneOrderDetail(id);
         orderDAO.deleteOrderDetail(id);
+
+        /* Update total for the order after a change with the related subtotals */
         orderDAO.updateTotal(foundOrder.getOrder().getId()); 
     }
 

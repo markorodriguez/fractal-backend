@@ -44,6 +44,7 @@ public class OrdersController {
 
     @PostMapping(path = "/update-one/{id}")
     public void updateOrder(@PathVariable Integer id, @RequestBody String status){
+        /* Replace method used to escape double quotes from JSON body */
         ordersDAO.updateOrder(id, status.replace("\"", ""));
     }
 

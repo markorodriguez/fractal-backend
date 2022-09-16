@@ -59,7 +59,6 @@ public class OrderDAOImp implements OrderDAO {
         double subtotalPlusTaxes = accumulator + ((accumulator*0.1)+(accumulator*0.055)+(accumulator*0.0924)+(accumulator*0.0249));
 
         respectiveOrder.setTotalOrder(subtotalPlusTaxes);
-
     }
     
 }

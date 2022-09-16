@@ -19,6 +19,7 @@ public class ClientsController {
     @Autowired
     private ClientsDAO clientsDAO;
 
+    // @Params ClientId
     @RequestMapping(path = "/find-one/{id}")
     public Client findOneClient(@PathVariable Integer id){
         return clientsDAO.findOneClient(id);

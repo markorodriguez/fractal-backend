@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 public class MainRouteController {
 
+    /* Main route for the welcome page */
+
     @GetMapping(value="")
     public String welcome() {
         return "Welcome to the backend"; 
